@@ -1,15 +1,7 @@
-const mongoose = require("mongoose");
 const express = require("express");
-const uri =
-  "mongodb+srv://sa:123456a@fptassignments.zqwm9.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
-const app = express();
-mongoose.connect(uri);
-const appRouter = require("./routers");
-const model = require("./DTO/application");
-const PORT = process.env.PORT || 3000;
+const router = express.Router();
+const appController = require("../controller/appController");
 
-app.use("/app", appRouter);
+router.get("/", appController.getApps);
 
-app.listen(PORT, () => {
-  console.log("The app is on");
-});
+module.exports = router;
